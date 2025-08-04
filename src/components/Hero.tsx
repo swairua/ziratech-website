@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Zap, Shield, Globe2 } from "lucide-react";
-import africanHeroBanner from "@/assets/african-hero-banner.jpg";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -14,9 +13,9 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={africanHeroBanner} 
-          alt="African Technology Landscape" 
+        <img
+          src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          alt="African Technology Landscape"
           className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/40 via-black/30 to-brand-orange/25"></div>

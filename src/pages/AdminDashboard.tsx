@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { DashboardOverview } from '@/components/admin/DashboardOverview';
+import { DatabaseStatus } from '@/components/DatabaseStatus';
 
 const AdminDashboard = () => {
   const { user, loading } = useAuth();
@@ -31,7 +32,10 @@ const AdminDashboard = () => {
 
   return (
     <AdminLayout>
-      <DashboardOverview />
+      <div className="space-y-6">
+        <DatabaseStatus />
+        <DashboardOverview />
+      </div>
     </AdminLayout>
   );
 };

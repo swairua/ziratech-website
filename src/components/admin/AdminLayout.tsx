@@ -1,25 +1,35 @@
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import { AdminSidebar } from './AdminSidebar';
-import { AdminHeader } from './AdminHeader';
+import { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface AdminLayoutProps {
-  children?: React.ReactNode;
+  children: ReactNode;
+  title: string;
 }
 
-export const AdminLayout = ({ children }: AdminLayoutProps) => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-
+export const AdminLayout = ({ children, title }: AdminLayoutProps) => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminSidebar isOpen={sidebarOpen} onToggle={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="border-b bg-white">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold">{title}</h1>
+            <Button variant="outline">
+              Logout
+            </Button>
+          </div>
+        </div>
+      </div>
       
-      <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-16'}`}>
-        <AdminHeader onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
-        
-        <main className="p-6">
-          {children || <Outlet />}
-        </main>
+      <div className="container mx-auto px-4 py-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>{title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {children}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

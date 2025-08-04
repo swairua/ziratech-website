@@ -59,9 +59,9 @@ const Header = () => {
             onClick={() => navigate('/')}
             className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
           >
-            <img 
-              src="/lovable-uploads/c3459758-169f-4a51-bfc7-beb8ad362e87.png" 
-              alt="Zira Technologies Logo" 
+            <img
+              src="/zira-logo-small.webp"
+              alt="Zira Technologies Logo"
               className="w-10 h-10"
             />
             <div>
