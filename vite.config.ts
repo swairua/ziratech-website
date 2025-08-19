@@ -11,10 +11,14 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       port: 8080,
       host: "localhost",
+      clientPort: 8080,
+      timeout: 60000,
     },
     watch: {
       usePolling: true,
+      interval: 1000,
     },
+    cors: true,
   },
   plugins: [
     react(),
