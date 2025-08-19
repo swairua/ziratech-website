@@ -294,16 +294,27 @@ export const FormSubmissionsList = ({ formType, onUpdate }: FormSubmissionsListP
                   <TableRow key={submission.id}>
                      <TableCell>
                        <div>
-                         <div className="font-medium">{submission.name}</div>
-                         <div className="text-sm text-gray-500">{submission.email}</div>
-                         {submission.phone && (
-                           <div className="text-sm text-gray-500">{submission.phone}</div>
+                         <div className="font-medium">{submission.name || submission.data?.name}</div>
+                         <div className="text-sm text-gray-500">{submission.email || submission.data?.email}</div>
+                         {(submission.phone || submission.data?.phone) && (
+                           <div className="text-sm text-gray-500">{submission.phone || submission.data?.phone}</div>
                          )}
-                         {submission.company && (
-                           <div className="text-sm text-gray-500">{submission.company}</div>
+                         {(submission.company || submission.data?.company) && (
+                           <div className="text-sm text-gray-500">{submission.company || submission.data?.company}</div>
                          )}
-                         {submission.position && (
-                           <div className="text-sm text-blue-600">Position: {submission.position}</div>
+                         {(submission.position || submission.data?.role) && (
+                           <div className="text-sm text-blue-600">
+                             {submission.form_type === 'career' ? 'Position' : 'Role'}: {submission.position || submission.data?.role}
+                           </div>
+                         )}
+                         {submission.platform && (
+                           <div className="text-sm text-purple-600">Platform: {submission.platform}</div>
+                         )}
+                         {submission.data?.businessType && (
+                           <div className="text-sm text-green-600">Business: {submission.data.businessType}</div>
+                         )}
+                         {submission.data?.businessSize && (
+                           <div className="text-sm text-orange-600">Size: {submission.data.businessSize}</div>
                          )}
                        </div>
                     </TableCell>
