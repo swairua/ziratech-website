@@ -137,7 +137,7 @@ const DemoBookingModal = ({ children, platform = "Zira Homes" }: DemoBookingModa
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="max-w-2xl mx-auto max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-full max-w-4xl mx-auto max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl text-brand-navy flex items-center">
             <Video className="mr-2 h-6 w-6 text-brand-orange" />
