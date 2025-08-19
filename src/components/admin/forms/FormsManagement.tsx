@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { FormSubmissionsList } from './FormSubmissionsList';
 import { FormAnalytics } from './FormAnalytics';
-import { FileText, Briefcase, Settings, BarChart3 } from 'lucide-react';
+import { FileText, Briefcase, Settings, BarChart3, Video, Rocket, Globe, Lock, MessageSquare, Handshake, HelpCircle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
 export const FormsManagement = () => {
