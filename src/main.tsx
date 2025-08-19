@@ -4,42 +4,25 @@ import './index.css'
 import './lib/fetchWrapper' // Initialize enhanced fetch handling
 import './lib/viteErrorSuppression' // Suppress development errors
 
-// Global error handler for external service failures
+// Global error handler for external service failures only
 window.addEventListener('error', (event) => {
-  // Suppress FullStory, Vite HMR, and other external service errors in development
+  // Only suppress errors from known external services
   if (event.error?.message?.includes('Failed to fetch') &&
       (event.filename?.includes('fullstory.com') ||
-       event.filename?.includes('edge.fullstory.com') ||
-       event.filename?.includes('@vite/client') ||
-       event.error?.stack?.includes('ping') ||
-       event.error?.stack?.includes('waitForSuccessfulPing'))) {
-    console.warn('External service/HMR error suppressed:', event.error.message);
+       event.filename?.includes('edge.fullstory.com'))) {
+    console.warn('External service error suppressed:', event.error.message);
     event.preventDefault();
     return false;
   }
 });
 
-// Handle unhandled promise rejections from external services
+// Handle unhandled promise rejections from external services only
 window.addEventListener('unhandledrejection', (event) => {
-  if (event.reason?.message?.includes('Failed to fetch') ||
-      event.reason?.toString().includes('fullstory') ||
-      event.reason?.toString().includes('ping') ||
-      event.reason?.toString().includes('waitForSuccessfulPing')) {
-    console.warn('External service/HMR promise rejection suppressed:', event.reason);
+  const reason = event.reason?.toString() || '';
+  if (reason.includes('fullstory.com') || reason.includes('edge.fullstory.com')) {
+    console.warn('External service promise rejection suppressed:', event.reason);
     event.preventDefault();
   }
 });
-
-// Override console.error to filter noise in development
-const originalConsoleError = console.error;
-console.error = (...args) => {
-  const message = args.join(' ');
-  if (message.includes('Failed to fetch') &&
-      (message.includes('fullstory') || message.includes('ping'))) {
-    // Suppress noisy external service errors
-    return;
-  }
-  originalConsoleError.apply(console, args);
-};
 
 createRoot(document.getElementById("root")!).render(<App />);
