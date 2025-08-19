@@ -42,6 +42,8 @@ interface FormSubmission {
   created_at: string;
   handled_by?: string;
   handled_at?: string;
+  data?: any; // Additional form data stored as JSON
+  platform?: string;
 }
 
 interface FormSubmissionsListProps {
