@@ -40,7 +40,13 @@ export const FormsManagement = () => {
       const stats = {
         contact: { total: 0, new: 0, responded: 0 },
         career: { total: 0, new: 0, responded: 0 },
-        custom: { total: 0, new: 0, responded: 0 }
+        demo_booking: { total: 0, new: 0, responded: 0 },
+        start_journey: { total: 0, new: 0, responded: 0 },
+        zira_web: { total: 0, new: 0, responded: 0 },
+        zira_lock: { total: 0, new: 0, responded: 0 },
+        zira_sms: { total: 0, new: 0, responded: 0 },
+        partnership: { total: 0, new: 0, responded: 0 },
+        support: { total: 0, new: 0, responded: 0 }
       };
 
       allSubmissions?.forEach(submission => {
