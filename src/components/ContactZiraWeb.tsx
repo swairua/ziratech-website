@@ -125,8 +125,8 @@ const ContactZiraWeb = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="name" className="text-brand-navy font-semibold">Full Name</Label>
                     <Input 
@@ -152,7 +152,7 @@ const ContactZiraWeb = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="phone" className="text-brand-navy font-semibold">Phone Number</Label>
                     <Input 
@@ -177,7 +177,7 @@ const ContactZiraWeb = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="website_type" className="text-brand-navy font-semibold">Type of Website</Label>
                     <Select value={formData.website_type} onValueChange={value => handleInputChange("website_type", value)}>
@@ -216,7 +216,7 @@ const ContactZiraWeb = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="timeline" className="text-brand-navy font-semibold">Project Timeline</Label>
                     <Select value={formData.timeline} onValueChange={value => handleInputChange("timeline", value)}>
