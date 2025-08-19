@@ -158,12 +158,30 @@ export const FormSubmissionsList = ({ formType, onUpdate }: FormSubmissionsListP
     const colors = {
       contact: 'bg-blue-100 text-blue-800',
       career: 'bg-green-100 text-green-800',
-      custom: 'bg-purple-100 text-purple-800'
+      demo_booking: 'bg-blue-500/10 text-blue-600 border-blue-500/20',
+      start_journey: 'bg-purple-500/10 text-purple-600 border-purple-500/20',
+      zira_web: 'bg-green-500/10 text-green-600 border-green-500/20',
+      zira_lock: 'bg-red-500/10 text-red-600 border-red-500/20',
+      zira_sms: 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20',
+      partnership: 'bg-teal-500/10 text-teal-600 border-teal-500/20',
+      support: 'bg-orange-500/10 text-orange-600 border-orange-500/20'
+    } as const;
+
+    const labels = {
+      contact: 'Contact',
+      career: 'Career',
+      demo_booking: 'Demo Booking',
+      start_journey: 'Business Consultation',
+      zira_web: 'Zira Web',
+      zira_lock: 'Zira Lock',
+      zira_sms: 'Zira SMS',
+      partnership: 'Partnership',
+      support: 'Support'
     } as const;
 
     return (
-      <Badge className={colors[type as keyof typeof colors] || 'bg-gray-100 text-gray-800'}>
-        {type}
+      <Badge className={colors[type as keyof typeof colors] || 'bg-gray-100 text-gray-800'} variant="outline">
+        {labels[type as keyof typeof labels] || type}
       </Badge>
     );
   };
