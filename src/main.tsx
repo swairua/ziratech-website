@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import './lib/fetchWrapper' // Initialize enhanced fetch handling
+import './lib/viteErrorSuppression' // Suppress development errors
 
 // Global error handler for external service failures
 window.addEventListener('error', (event) => {
