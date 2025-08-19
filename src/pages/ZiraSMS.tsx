@@ -419,11 +419,11 @@ const ZiraSMS = () => {
                 Start Free Trial
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="hero"
                 className="border-2 border-white bg-white/10 text-white hover:bg-white hover:text-brand-navy backdrop-blur-sm text-lg px-10 py-6 rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 group"
-                onClick={scrollToContact}
+                onClick={scrollToPricing}
               >
                 View Pricing
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
