@@ -74,6 +74,46 @@ export const FormsManagement = () => {
       color: 'bg-brand-orange/10 text-brand-orange border-brand-orange/20'
     },
     {
+      type: 'demo_booking',
+      name: 'Demo Bookings',
+      count: formStats.demo_booking.total,
+      newCount: formStats.demo_booking.new,
+      icon: Video,
+      color: 'bg-blue-500/10 text-blue-500 border-blue-500/20'
+    },
+    {
+      type: 'start_journey',
+      name: 'Business Consultations',
+      count: formStats.start_journey.total,
+      newCount: formStats.start_journey.new,
+      icon: Rocket,
+      color: 'bg-purple-500/10 text-purple-500 border-purple-500/20'
+    },
+    {
+      type: 'zira_web',
+      name: 'Zira Web Inquiries',
+      count: formStats.zira_web.total,
+      newCount: formStats.zira_web.new,
+      icon: Globe,
+      color: 'bg-green-500/10 text-green-500 border-green-500/20'
+    },
+    {
+      type: 'zira_lock',
+      name: 'Zira Lock Inquiries',
+      count: formStats.zira_lock.total,
+      newCount: formStats.zira_lock.new,
+      icon: Lock,
+      color: 'bg-red-500/10 text-red-500 border-red-500/20'
+    },
+    {
+      type: 'zira_sms',
+      name: 'Zira SMS Inquiries',
+      count: formStats.zira_sms.total,
+      newCount: formStats.zira_sms.new,
+      icon: MessageSquare,
+      color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20'
+    },
+    {
       type: 'career',
       name: 'Career Applications',
       count: formStats.career.total,
@@ -82,12 +122,20 @@ export const FormsManagement = () => {
       color: 'bg-brand-navy/10 text-brand-navy border-brand-navy/20'
     },
     {
-      type: 'custom',
-      name: 'Custom Forms',
-      count: formStats.custom.total,
-      newCount: formStats.custom.new,
-      icon: Settings,
-      color: 'bg-muted text-muted-foreground border-border'
+      type: 'partnership',
+      name: 'Partnership Inquiries',
+      count: formStats.partnership.total,
+      newCount: formStats.partnership.new,
+      icon: Handshake,
+      color: 'bg-teal-500/10 text-teal-500 border-teal-500/20'
+    },
+    {
+      type: 'support',
+      name: 'Support Requests',
+      count: formStats.support.total,
+      newCount: formStats.support.new,
+      icon: HelpCircle,
+      color: 'bg-orange-500/10 text-orange-500 border-orange-500/20'
     }
   ];
 
