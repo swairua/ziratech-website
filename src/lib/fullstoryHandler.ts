@@ -71,42 +71,5 @@ export function handleFullStoryError(error: Error, url?: string): boolean {
   return false; // Not a FullStory error
 }
 
-/**
- * Patch fetch specifically for FullStory URLs
- */
-if (import.meta.env.DEV) {
-  const originalFetch = window.fetch;
-  
-  window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
-    const url = typeof input === 'string' ? input : input.toString();
-    
-    // Only handle FullStory URLs
-    if (url.includes('fullstory.com') || url.includes('edge.fullstory.com')) {
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 2000); // Quick timeout
-        
-        const response = await originalFetch(input, {
-          ...init,
-          signal: controller.signal,
-        });
-        
-        clearTimeout(timeoutId);
-        return response;
-      } catch (error) {
-        // Silently handle FullStory failures
-        console.warn('FullStory service unavailable, continuing without analytics');
-        
-        // Return a mock successful response to prevent errors
-        return new Response('{}', {
-          status: 200,
-          statusText: 'OK',
-          headers: { 'Content-Type': 'application/json' }
-        });
-      }
-    }
-    
-    // Use original fetch for all other URLs
-    return originalFetch(input, init);
-  };
-}
+// Note: Removed fetch patching completely to avoid interfering with Vite HMR
+// FullStory errors are now handled purely through passive error suppression
