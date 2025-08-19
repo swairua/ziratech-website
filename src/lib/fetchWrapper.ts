@@ -82,61 +82,8 @@ export async function fetchWrapper(
   );
 }
 
-/**
- * Selective fetch patching for external services only
- */
-if (import.meta.env.DEV) {
-  const originalFetch = window.fetch;
-
-  window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
-    const url = typeof input === 'string' ? input : input.toString();
-
-    // Only intercept external service URLs that are known to cause issues
-    const isExternalService =
-      url.includes('fullstory.com') ||
-      url.includes('edge.fullstory.com') ||
-      url.includes('google-analytics.com') ||
-      url.includes('googletagmanager.com') ||
-      url.includes('facebook.com') ||
-      url.includes('twitter.com');
-
-    // Don't intercept localhost, Vite HMR, or internal API calls
-    const isInternalRequest =
-      url.includes('localhost') ||
-      url.includes('127.0.0.1') ||
-      url.includes(window.location.host) ||
-      url.startsWith('/') ||
-      url.includes('__vite') ||
-      url.includes('supabase.co');
-
-    if (isExternalService && !isInternalRequest) {
-      try {
-        // Quick timeout for external services
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 3000);
-
-        const response = await originalFetch(input, {
-          ...init,
-          signal: controller.signal,
-        });
-
-        clearTimeout(timeoutId);
-        return response;
-      } catch (error) {
-        // Silently return a mock response for failed external services
-        console.warn(`External service unavailable: ${url}`);
-        return new Response(JSON.stringify({ error: 'Service unavailable' }), {
-          status: 503,
-          statusText: 'Service Unavailable',
-          headers: { 'Content-Type': 'application/json' }
-        });
-      }
-    }
-
-    // Use original fetch for all other requests (including Vite HMR)
-    return originalFetch(input, init);
-  };
-}
+// Note: Fetch patching has been moved to specific handlers (fullstoryHandler.ts)
+// to avoid interfering with Vite HMR and other internal operations
 
 /**
  * Utility to check if an error is a network error that should be suppressed
