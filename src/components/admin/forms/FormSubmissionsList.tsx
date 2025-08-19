@@ -45,7 +45,7 @@ interface FormSubmission {
 }
 
 interface FormSubmissionsListProps {
-  formType: 'all' | 'contact' | 'career' | 'custom';
+  formType: 'all' | 'contact' | 'career' | 'business' | 'platforms' | 'demo_booking' | 'start_journey' | 'zira_web' | 'zira_lock' | 'zira_sms' | 'partnership' | 'support';
   onUpdate?: () => void;
 }
 
