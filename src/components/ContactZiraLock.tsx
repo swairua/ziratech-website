@@ -149,7 +149,7 @@ const ContactZiraLock = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="phone" className="text-brand-navy font-semibold">Phone Number</Label>
                     <Input 
