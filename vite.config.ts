@@ -13,12 +13,15 @@ export default defineConfig(({ mode }) => ({
       host: "localhost",
       clientPort: 8080,
       timeout: 60000,
+      overlay: true,
     },
     watch: {
       usePolling: true,
       interval: 1000,
+      ignored: ['**/node_modules/**', '**/dist/**'],
     },
     cors: true,
+    strictPort: false,
   },
   plugins: [
     react(),
