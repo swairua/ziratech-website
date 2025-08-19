@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import './lib/fullstoryHandler' // Handle FullStory errors specifically
+import './lib/passiveErrorHandler' // Passive external service error handling
 
 // Comprehensive passive error suppression for external services
 window.addEventListener('error', (event) => {
