@@ -20,12 +20,19 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import DemoBookingModal from "@/components/DemoBookingModal";
+import StartYourJourneyModal from "@/components/StartYourJourneyModal";
 import ContactZiraSMS from "@/components/ContactZiraSMS";
 
 const ZiraSMS = () => {
   const scrollToContact = () => {
     const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToPricing = () => {
+    const element = document.getElementById('pricing');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -178,7 +185,7 @@ const ZiraSMS = () => {
                   <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
               </Button>
-              <DemoBookingModal platform="Zira SMS">
+              <StartYourJourneyModal platform="Zira SMS">
                 <Button 
                   size="lg" 
                   variant="hero"
@@ -191,7 +198,7 @@ const ZiraSMS = () => {
                     <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
                   </span>
                 </Button>
-              </DemoBookingModal>
+              </StartYourJourneyModal>
             </div>
             
             {/* Trust Indicators */}
@@ -333,7 +340,7 @@ const ZiraSMS = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20">
+      <section id="pricing" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">
@@ -412,11 +419,11 @@ const ZiraSMS = () => {
                 Start Free Trial
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="hero"
                 className="border-2 border-white bg-white/10 text-white hover:bg-white hover:text-brand-navy backdrop-blur-sm text-lg px-10 py-6 rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 group"
-                onClick={scrollToContact}
+                onClick={scrollToPricing}
               >
                 View Pricing
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import DemoBookingModal from "@/components/DemoBookingModal";
+import StartYourJourneyModal from "@/components/StartYourJourneyModal";
 import ContactZiraLock from "@/components/ContactZiraLock";
 import iotDevices from "@/assets/iot-devices.jpg";
 import dashboardAnalytics from "@/assets/dashboard-analytics.jpg";
@@ -130,7 +130,7 @@ const ZiraLock = () => {
                 Talk to Us About Zira Lock
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <DemoBookingModal platform="Zira Lock">
+              <StartYourJourneyModal platform="Zira Lock">
                 <Button 
                   size="lg" 
                   variant="outline" 
@@ -139,7 +139,7 @@ const ZiraLock = () => {
                   View Demo
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </DemoBookingModal>
+              </StartYourJourneyModal>
             </div>
           </div>
         </div>

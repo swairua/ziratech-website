@@ -13,5 +13,22 @@ export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABL
     storage: localStorage,
     persistSession: true,
     autoRefreshToken: true,
-  }
+  },
+  global: {
+    fetch: (url, options = {}) => {
+      return fetch(url, {
+        ...options,
+        // Add timeout to prevent hanging requests
+        signal: AbortSignal.timeout(30000),
+      }).catch((error) => {
+        console.error('Supabase fetch error:', error);
+        throw error;
+      });
+    },
+  },
+  realtime: {
+    params: {
+      eventsPerSecond: 2,
+    },
+  },
 });
