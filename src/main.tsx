@@ -1,8 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import './lib/fetchWrapper' // Initialize enhanced fetch handling
-// import './lib/viteErrorSuppression' // Disabled - was too aggressive
+import './lib/fullstoryHandler' // Handle FullStory errors specifically
 
 // Global error handler for external service failures only
 window.addEventListener('error', (event) => {
