@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import './lib/fetchWrapper' // Initialize enhanced fetch handling
 
 // Global error handler for external service failures
 window.addEventListener('error', (event) => {
