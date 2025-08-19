@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import DemoBookingModal from "@/components/DemoBookingModal";
+import StartYourJourneyModal from "@/components/StartYourJourneyModal";
 import ContactZiraSMS from "@/components/ContactZiraSMS";
 
 const ZiraSMS = () => {
@@ -185,7 +185,7 @@ const ZiraSMS = () => {
                   <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
               </Button>
-              <DemoBookingModal platform="Zira SMS">
+              <StartYourJourneyModal platform="Zira SMS">
                 <Button 
                   size="lg" 
                   variant="hero"
@@ -198,7 +198,7 @@ const ZiraSMS = () => {
                     <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
                   </span>
                 </Button>
-              </DemoBookingModal>
+              </StartYourJourneyModal>
             </div>
             
             {/* Trust Indicators */}
