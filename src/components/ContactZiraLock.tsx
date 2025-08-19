@@ -175,7 +175,7 @@ const ContactZiraLock = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="device_type" className="text-brand-navy font-semibold">Device Type</Label>
                     <Select value={formData.device_type} onValueChange={value => handleInputChange("device_type", value)}>
