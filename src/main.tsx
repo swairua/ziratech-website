@@ -3,6 +3,7 @@ import App from './App.tsx'
 import './index.css'
 import './lib/passiveErrorHandler' // Passive external service error handling
 import './lib/hmrErrorHandler' // Handle HMR connectivity issues
+import './lib/devConnectivityStatus' // Development connectivity status
 
 // Comprehensive passive error suppression for external services and HMR
 window.addEventListener('error', (event) => {
