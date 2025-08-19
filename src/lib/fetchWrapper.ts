@@ -83,25 +83,48 @@ export async function fetchWrapper(
 }
 
 /**
- * Patch window.fetch to use our enhanced wrapper in development
+ * Selective fetch patching for external services only
  */
 if (import.meta.env.DEV) {
   const originalFetch = window.fetch;
-  
+
   window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
     const url = typeof input === 'string' ? input : input.toString();
-    
-    // Use enhanced wrapper for external services and problematic URLs
-    if (
+
+    // Only intercept external service URLs that are known to cause issues
+    const isExternalService =
       url.includes('fullstory.com') ||
       url.includes('edge.fullstory.com') ||
-      url.includes('analytics') ||
-      url.includes('tracking')
-    ) {
+      url.includes('google-analytics.com') ||
+      url.includes('googletagmanager.com') ||
+      url.includes('facebook.com') ||
+      url.includes('twitter.com');
+
+    // Don't intercept localhost, Vite HMR, or internal API calls
+    const isInternalRequest =
+      url.includes('localhost') ||
+      url.includes('127.0.0.1') ||
+      url.includes(window.location.host) ||
+      url.startsWith('/') ||
+      url.includes('__vite') ||
+      url.includes('supabase.co');
+
+    if (isExternalService && !isInternalRequest) {
       try {
-        return await fetchWrapper(url, { ...init, retries: 1, timeout: 5000 });
+        // Quick timeout for external services
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+        const response = await originalFetch(input, {
+          ...init,
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+        return response;
       } catch (error) {
-        // Return a mock response for external services to prevent errors
+        // Silently return a mock response for failed external services
+        console.warn(`External service unavailable: ${url}`);
         return new Response(JSON.stringify({ error: 'Service unavailable' }), {
           status: 503,
           statusText: 'Service Unavailable',
@@ -109,8 +132,8 @@ if (import.meta.env.DEV) {
         });
       }
     }
-    
-    // Use original fetch for internal requests
+
+    // Use original fetch for all other requests (including Vite HMR)
     return originalFetch(input, init);
   };
 }
