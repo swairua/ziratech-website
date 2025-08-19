@@ -31,6 +31,13 @@ const ZiraSMS = () => {
     }
   };
 
+  const scrollToPricing = () => {
+    const element = document.getElementById('pricing');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const features = [
     {
       icon: <Send className="h-6 w-6" />,
