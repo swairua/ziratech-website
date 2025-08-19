@@ -181,15 +181,21 @@ export const FormsManagement = () => {
 
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4 bg-muted p-1">
+        <TabsList className="grid w-full grid-cols-6 bg-muted p-1">
           <TabsTrigger value="all" className="data-[state=active]:bg-brand-orange data-[state=active]:text-white">
-            All Submissions
+            All
+          </TabsTrigger>
+          <TabsTrigger value="business" className="data-[state=active]:bg-brand-orange data-[state=active]:text-white">
+            Business
+          </TabsTrigger>
+          <TabsTrigger value="platforms" className="data-[state=active]:bg-brand-orange data-[state=active]:text-white">
+            Platforms
           </TabsTrigger>
           <TabsTrigger value="contact" className="data-[state=active]:bg-brand-orange data-[state=active]:text-white">
-            Contact Forms
+            Contact
           </TabsTrigger>
           <TabsTrigger value="career" className="data-[state=active]:bg-brand-orange data-[state=active]:text-white">
-            Career Applications
+            Career
           </TabsTrigger>
           <TabsTrigger value="analytics" className="data-[state=active]:bg-brand-orange data-[state=active]:text-white">
             <BarChart3 className="h-4 w-4 mr-2" />
@@ -199,6 +205,29 @@ export const FormsManagement = () => {
 
         <TabsContent value="all" className="space-y-6">
           <FormSubmissionsList formType="all" onUpdate={fetchFormStats} />
+        </TabsContent>
+
+        <TabsContent value="business" className="space-y-6">
+          <div className="grid gap-4">
+            <div className="flex flex-wrap gap-2 mb-4">
+              <Badge variant="outline" className="bg-blue-500/10 text-blue-500">Demo Bookings</Badge>
+              <Badge variant="outline" className="bg-purple-500/10 text-purple-500">Business Consultations</Badge>
+              <Badge variant="outline" className="bg-teal-500/10 text-teal-500">Partnerships</Badge>
+              <Badge variant="outline" className="bg-orange-500/10 text-orange-500">Support</Badge>
+            </div>
+            <FormSubmissionsList formType="business" onUpdate={fetchFormStats} />
+          </div>
+        </TabsContent>
+
+        <TabsContent value="platforms" className="space-y-6">
+          <div className="grid gap-4">
+            <div className="flex flex-wrap gap-2 mb-4">
+              <Badge variant="outline" className="bg-green-500/10 text-green-500">Zira Web</Badge>
+              <Badge variant="outline" className="bg-red-500/10 text-red-500">Zira Lock</Badge>
+              <Badge variant="outline" className="bg-yellow-500/10 text-yellow-500">Zira SMS</Badge>
+            </div>
+            <FormSubmissionsList formType="platforms" onUpdate={fetchFormStats} />
+          </div>
         </TabsContent>
 
         <TabsContent value="contact" className="space-y-6">
