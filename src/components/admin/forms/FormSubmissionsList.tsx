@@ -325,8 +325,33 @@ export const FormSubmissionsList = ({ formType, onUpdate }: FormSubmissionsListP
                       {getStatusBadge(submission.status)}
                     </TableCell>
                     <TableCell>
-                      <div className="max-w-48 truncate text-sm">
-                        {submission.message || 'No message'}
+                      <div className="max-w-48 text-sm space-y-1">
+                        {submission.message && (
+                          <div className="truncate">{submission.message}</div>
+                        )}
+                        {submission.data?.currentChallenges && (
+                          <div className="truncate text-red-600">
+                            <span className="font-medium">Challenges:</span> {submission.data.currentChallenges}
+                          </div>
+                        )}
+                        {submission.data?.requirements && (
+                          <div className="truncate text-blue-600">
+                            <span className="font-medium">Requirements:</span> {submission.data.requirements}
+                          </div>
+                        )}
+                        {submission.data?.timePreference && (
+                          <div className="truncate text-green-600">
+                            <span className="font-medium">Preferred Time:</span> {submission.data.timePreference}
+                          </div>
+                        )}
+                        {submission.data?.specificRequirements && (
+                          <div className="truncate text-purple-600">
+                            <span className="font-medium">Needs:</span> {submission.data.specificRequirements}
+                          </div>
+                        )}
+                        {(!submission.message && !submission.data?.currentChallenges && !submission.data?.requirements && !submission.data?.timePreference && !submission.data?.specificRequirements) && (
+                          <div className="text-gray-400">No message</div>
+                        )}
                       </div>
                     </TableCell>
                     <TableCell>
