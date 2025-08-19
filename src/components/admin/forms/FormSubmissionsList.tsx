@@ -71,7 +71,13 @@ export const FormSubmissionsList = ({ formType, onUpdate }: FormSubmissionsListP
 
       // Apply form type filter
       if (formType !== 'all') {
-        query = query.eq('form_type', formType);
+        if (formType === 'business') {
+          query = query.in('form_type', ['demo_booking', 'start_journey', 'partnership', 'support']);
+        } else if (formType === 'platforms') {
+          query = query.in('form_type', ['zira_web', 'zira_lock', 'zira_sms']);
+        } else {
+          query = query.eq('form_type', formType);
+        }
       }
 
       // Apply search filter
