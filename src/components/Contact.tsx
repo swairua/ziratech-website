@@ -112,8 +112,8 @@ const Contact = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="name" className="text-brand-navy font-semibold">Name</Label>
                     <Input id="name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} placeholder="Your full name" className="border-2 focus:border-brand-orange" required />
