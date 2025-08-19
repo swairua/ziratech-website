@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import './lib/passiveErrorHandler' // Passive external service error handling
+import './lib/hmrErrorHandler' // Handle HMR connectivity issues
 
 // Comprehensive passive error suppression for external services and HMR
 window.addEventListener('error', (event) => {
