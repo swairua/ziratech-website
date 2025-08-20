@@ -1,6 +1,6 @@
 /**
- * Development-only connectivity status indicator
- * Shows subtle notifications about network issues without disrupting development
+ * Minimal development connectivity status indicator
+ * Shows basic network status without interfering with Vite HMR
  */
 
 if (import.meta.env.DEV) {
@@ -58,48 +58,14 @@ if (import.meta.env.DEV) {
     }, 3000);
   }
 
-  // Monitor network status
-  let isOffline = false;
-  let hmrIssueCount = 0;
-
+  // Only monitor basic network status
   window.addEventListener('online', () => {
-    if (isOffline) {
-      showStatus('🌐 Network connectivity restored', 'info');
-      isOffline = false;
-      hmrIssueCount = 0;
-    }
+    showStatus('🌐 Network connectivity restored', 'info');
   });
 
   window.addEventListener('offline', () => {
     showStatus('⚠️ Network connectivity lost', 'warning');
-    isOffline = true;
   });
-
-  // Monitor HMR connectivity issues
-  window.addEventListener('unhandledrejection', (event) => {
-    const reason = event.reason?.toString() || '';
-    const stack = event.reason?.stack || '';
-
-    if (reason.includes('Failed to fetch') && 
-        (stack.includes('ping') || stack.includes('@vite/client'))) {
-      
-      hmrIssueCount++;
-      
-      if (hmrIssueCount === 1) {
-        showStatus('🔄 HMR connectivity issue (development continues)', 'warning');
-      } else if (hmrIssueCount >= 5) {
-        showStatus('🚨 Persistent HMR issues (check network)', 'error');
-        hmrIssueCount = 0; // Reset to avoid spam
-      }
-    }
-  });
-
-  // Reset HMR issue count periodically
-  setInterval(() => {
-    if (hmrIssueCount > 0) {
-      hmrIssueCount = Math.max(0, hmrIssueCount - 1);
-    }
-  }, 30000); // Decay count every 30 seconds
 
   // Cleanup on page unload
   window.addEventListener('beforeunload', () => {
@@ -111,11 +77,10 @@ if (import.meta.env.DEV) {
     }
   });
 
-  // Expose debug info
+  // Minimal debug info
   (window as any).__DEV_CONNECTIVITY__ = {
     showStatus,
-    getHmrIssueCount: () => hmrIssueCount,
-    isOffline: () => isOffline
+    version: '1.0.0-minimal'
   };
 }
 

@@ -36,7 +36,18 @@ const Header = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
-    // If we're not on the home page, navigate to home first
+    // For platform pages, scroll to section on current page
+    const platformPages = ['/zira-homes', '/zira-lock', '/zira-sms', '/zira-web'];
+    if (platformPages.includes(location.pathname) && sectionId === 'contact') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      setIsMenuOpen(false);
+      return;
+    }
+
+    // For other sections, navigate to home page first
     if (location.pathname !== '/') {
       navigate('/');
       // Use setTimeout to ensure navigation completes before scrolling
@@ -48,7 +59,7 @@ const Header = () => {
       }, 100);
       return;
     }
-    
+
     // If we're on home page, scroll to section
     const element = document.getElementById(sectionId);
     if (element) {
